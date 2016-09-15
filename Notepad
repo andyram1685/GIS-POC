@@ -1,0 +1,57 @@
+
+Database Name : address.db
+Table Name: address
+Columns in table address:
+Suburb,Number,NumberLast,StreetSuffix,StreetSuffixFull,State,Street,StreetLine,BuildingName,StreetType,StreetTypeFull,UnitType,UnitTypeFull,UnitNumber,LevelType,LevelTypeFull,LevelNumber,Postcode,Longitude,Latitude,Meshblock,Valid
+
+
+Create table command :
+
+ create table address (Suburb CHAR(25) NOT NULL,
+ Number INT NOT NULL, NumberLast INT NOT NULL,StreetSuffix CHAR(25), StreetSuffixFull CHAR(50), State CHAR(20), Street CHAR(20), StreetLine CHAR(20), BuildingName CHAR(20), StreetType CHAR(10) ,StreetTypeFull CHAR(20), UnitType CHAR(20), UnitTypeFull CHAR(20), UnitNumber CHAR(10), LevelType CHAR(10), LevelTypeFull CHAR(10), LevelNumber CHAR(10), Postcode INT PRIMARY KEY NOT NULL, Longitude REAL NOT NULL, Latitude REAL NOT NULL, Meshblock INT NOT NULL, Valid CHAR(7));
+
+
+Valid Types
+
+TEXT	"TEXT"
+NUMERIC	"NUM"
+INTEGER	"INT"
+REAL	"REAL"
+NONE	"" (empty string)
+
+Example creation:
+
+CREATE TABLE COMPANY(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   AGE            INT     NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL
+);
+
+working :: DONT DELETE
+
+sqlite> create table address (Suburb CHAR(25) NOT NULL, Number INT NOT NULL, NumberLast INT NOT NULL,StreetSuffix CHAR(25), StreetSuffixFull CHAR(50), State CHAR(20), Street CHAR(20), StreetLine CHAR(20), BuildingName CHAR(20), StreetType CHAR(10) ,StreetTypeFull CHAR(20), UnitType CHAR(20), UnitTypeFull CHAR(20), UnitNumber CHAR(10), LevelType CHAR(10), LevelTypeFull CHAR(10), LevelNumber CHAR(10), Postcode INT PRIMARY KEY NOT NULL, Longitude REAL NOT NULL, Latitude REAL NOT NULL, Meshblock INT NOT NULL, Valid CHAR(7));
+
+Import address.csv to address table
+sqlite> .import address.csv address
+sqlite> select * from address
+
+
+List of Tasks to get the system up and running with REST Framework.
+
+yum install wget
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -ivh epel-release-latest-7.noarch.rpm
+yum install python-pip
+pip install virtualenv
+virtualenv gis-api
+source gis-api/bin/activate
+mkdir ~/gis-app
+cd ~/gis-app
+mv address.db ~/gis-app
+pip install flask
+pip install sqlalchemy
+pip install flask-restful
+vim app.py
+python app.py
